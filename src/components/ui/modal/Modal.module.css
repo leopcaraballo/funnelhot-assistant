@@ -1,43 +1,40 @@
-/* Modal.module.css */
-
 .overlay {
   position: fixed;
   inset: 0;
-  /* Fondo oscuro muy ligero con desenfoque intenso */
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 1000;
-  /* Transición suave para el fondo */
-  animation: fadeIn 300ms ease-out;
+
+  animation: overlay-appear 180ms ease-out;
 }
 
 .modal {
-  /* Fondo tipo cristal premium */
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  background-color: var(--bg-card);
 
-  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius-lg);
 
-  width: 90%; /* Responsivo */
+  width: 90%;
   max-height: 85vh;
+
   display: flex;
   flex-direction: column;
+
   box-shadow: var(--shadow-lg);
 
-  /* Animación tipo 'Pop' de Apple */
-  animation: modal-pop 450ms cubic-bezier(0.16, 1, 0.3, 1);
-  outline: none;
   overflow: hidden;
+  outline: none;
+
+  animation: modal-appear 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Tamaños con anchos más equilibrados */
+/* Widths */
 .sm {
   max-width: 400px;
 }
@@ -48,18 +45,19 @@
   max-width: 800px;
 }
 
-@keyframes modal-pop {
+/* Animaciones contenidas */
+@keyframes modal-appear {
   from {
     opacity: 0;
-    transform: scale(0.92) translateY(20px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
   }
 }
 
-@keyframes fadeIn {
+@keyframes overlay-appear {
   from {
     opacity: 0;
   }
@@ -68,54 +66,96 @@
   }
 }
 
+/* Header */
 .header {
-  padding: 24px 28px;
+  padding: 22px 28px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  /* Sin borde inferior para un look más moderno, o muy sutil */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--border);
 }
 
 .header h2 {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
-  color: var(--text-primary);
   letter-spacing: -0.02em;
+
+  color: var(--text-primary);
 }
 
+/* Close button */
 .close {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.05);
+  border: none;
+
+  background-color: rgba(0, 0, 0, 0.04);
   color: var(--text-secondary);
+
   font-size: 18px;
-  transition: all 200ms ease;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
 }
 
 .close:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.08);
   color: var(--text-primary);
-  transform: scale(1.1);
 }
 
+.close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Content */
 .content {
   padding: 28px;
+
   overflow-y: auto;
+
   font-size: 15px;
   line-height: 1.6;
+
   color: var(--text-primary);
 }
 
+/* Footer */
 .footer {
-  padding: 20px 28px;
-  background-color: rgba(0, 0, 0, 0.02); /* Fondo ligeramente distinto para el footer */
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 18px 28px;
+
   display: flex;
   justify-content: flex-end;
   gap: 12px;
+
+  border-top: 1px solid var(--border);
+
+  background-color: rgba(0, 0, 0, 0.015);
+}
+
+/* Mobile refinements */
+@media (max-width: 480px) {
+  .header {
+    padding: 20px 20px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .footer {
+    padding: 16px 20px;
+  }
 }

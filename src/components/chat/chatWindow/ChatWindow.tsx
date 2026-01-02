@@ -45,7 +45,7 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
 
   // Guardado persistente
   useEffect(() => {
-    if (isHydrated && messages.length > 0) {
+    if (isHydrated) {
       localStorage.setItem(storageKey, JSON.stringify(messages));
     }
   }, [messages, storageKey, isHydrated]);
@@ -81,7 +81,7 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
     localStorage.removeItem(storageKey);
   };
 
-  if (!isHydrated) return null; // No renderiza hasta que el cliente esté listo
+  if (!isHydrated) return null;
 
   return (
     <div className={styles.container}>
@@ -94,7 +94,7 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
         {messages.map((msg, idx) => (
           <ChatMessage key={idx} {...msg} />
         ))}
-        {loading && <ChatMessage role='assistant' content='...' />}
+        {loading && <ChatMessage role='assistant' content={t('typing')} />}
       </div>
 
       <div className={styles.inputArea}>
@@ -102,7 +102,12 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
           <Input
             value={input}
             onChange={e => setInput(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && sendMessage()}
+            onKeyDown={e => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+              }
+            }}
             disabled={loading}
             placeholder={t('placeholder')}
             label=''

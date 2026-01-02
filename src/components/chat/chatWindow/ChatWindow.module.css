@@ -1,13 +1,10 @@
-/* ChatWindow.module.css */
-
 .container {
   display: flex;
   flex-direction: column;
 
-  /* Altura clásica de ventana de chat */
-  height: 360px;
+  height: min(70vh, 357px);
   width: 100%;
-  max-width: 850px;
+  max-width: 860px;
   margin: 2rem auto;
 
   background-color: var(--bg-card);
@@ -23,16 +20,24 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   padding: 24px;
 
-  /* Gestión de Scroll */
   overflow-y: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 
-  /* Efecto de desvanecimiento superior para mensajes antiguos */
-  mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+  position: relative;
+}
+
+/* Fade superior elegante (mejor que mask-image) */
+.messages::before {
+  content: '';
+  position: sticky;
+  top: 0;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--bg-card), transparent);
+  z-index: 2;
 }
 
 .emptyState {
@@ -47,9 +52,10 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.01em;
+
   background: rgba(0, 0, 0, 0.03);
   padding: 8px 16px;
-  border-radius: 20px;
+  border-radius: 999px;
 }
 
 .inputArea {
@@ -58,7 +64,6 @@
   gap: 12px;
   padding: 16px 24px;
 
-  /* Glassmorphism de Apple */
   background-color: var(--bg-glass);
   backdrop-filter: var(--backdrop-blur);
   -webkit-backdrop-filter: var(--backdrop-blur);
@@ -71,9 +76,9 @@
   flex: 1;
 }
 
-/* Redondeo capsular para el Input (Estilo iOS) */
+/* Input estilo iOS capsular */
 .inputField :global(.input) {
-  border-radius: 24px !important;
+  border-radius: 999px !important;
   padding-left: 20px !important;
   background-color: rgba(0, 0, 0, 0.05) !important;
 }
@@ -90,17 +95,17 @@
 
 .sendButton,
 .resetButton {
-  border-radius: 20px !important; /* Estilo píldora */
+  border-radius: 999px !important;
   font-weight: 600 !important;
 }
 
-/* Personalización de la barra de scroll estilo macOS */
+/* Scrollbar macOS */
 .messages::-webkit-scrollbar {
   width: 6px;
 }
 
 .messages::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.12);
   border-radius: 10px;
 }
 

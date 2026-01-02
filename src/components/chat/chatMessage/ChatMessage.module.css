@@ -1,55 +1,45 @@
-/* ChatMessage.module.css */
-
 .message {
   position: relative;
-  max-width: 80%; /* Un poco más ancho para aprovechar espacio */
-  padding: 12px 18px; /* Más padding = más lujo */
+  max-width: 78%;
+  padding: 12px 18px;
 
-  font-size: 15px; /* Tamaño estándar de iOS */
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.55;
   letter-spacing: -0.01em;
 
-  /* Animación de "pop" al aparecer */
-  animation: message-pop 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: message-pop 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-origin: bottom center;
 }
 
-/* --- Estilos del Usuario (iMessage Blue) --- */
 .user {
   align-self: flex-end;
 
-  /* Azul vibrante con un degradado muy sutil hacia abajo */
   background: linear-gradient(180deg, var(--primary) 0%, var(--primary-hover) 100%);
-  color: #ffffff;
 
-  /* Forma de burbuja: Redondeado, excepto la esquina inferior derecha */
+  color: #ffffff;
   border-radius: 20px 20px 4px 20px;
 
-  /* Sombra sutil azulada para dar profundidad */
-  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.15);
+  box-shadow:
+    0 6px 18px rgba(0, 113, 227, 0.22),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* --- Estilos del Asistente (Gris Neutro) --- */
 .assistant {
   align-self: flex-start;
 
-  /* Fondo blanco o gris muy claro (depende de tu fondo de página) */
   background-color: #ffffff;
   color: var(--text-primary);
 
-  /* Forma de burbuja: Redondeado, excepto la esquina inferior izquierda */
   border-radius: 20px 20px 20px 4px;
+  border: 1px solid rgba(0, 0, 0, 0.025);
 
-  /* Sombra muy difusa para separarlo del fondo */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.03); /* Borde casi invisible */
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Animación de entrada fluida */
 @keyframes message-pop {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(10px);
+    transform: scale(0.96) translateY(10px);
   }
   to {
     opacity: 1;
@@ -57,12 +47,10 @@
   }
 }
 
-/* Ajuste para párrafos internos para evitar márgenes extraños */
 .message p {
   margin: 0;
 }
 
-/* Opcional: Si soportas Markdown o listas, asegúrate de que se vean bien */
 .message ul,
 .message ol {
   margin: 8px 0 8px 20px;

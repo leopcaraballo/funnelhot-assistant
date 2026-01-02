@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+
 import { useAssistants } from '@/hooks/useAssistants';
 import { Textarea } from '@/components/ui/textarea/Textarea';
 import { Button } from '@/components/ui/button/Button';
 import { ChatWindow } from '@/components/chat/chatWindow/ChatWindow';
+
 import styles from './AssistantTraining.module.css';
 
 interface Props {
@@ -16,25 +18,21 @@ interface Props {
 export function AssistantTrainingClient({ id }: Props) {
   const t = useTranslations('training');
   const tAssistants = useTranslations('assistants');
-  const { getAssistantById, updateAssistant, mounted } = useAssistants();
 
-  const [rules, setRules] = useState('');
-  const [saved, setSaved] = useState(false);
+  const { getAssistantById, updateAssistant, mounted } = useAssistants();
 
   const assistant = getAssistantById(id);
 
-  useEffect(() => {
-    if (assistant) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setRules(assistant.rules ?? '');
-    }
-  }, [assistant]);
+  const [rules, setRules] = useState(() => assistant?.rules ?? '');
+  const [saved, setSaved] = useState(false);
 
-  // Si el hook de almacenamiento no ha cargado (mounted), mostramos un loader
-  if (!mounted) return <div className={styles.container}>Cargando parámetros...</div>;
+  if (!mounted) {
+    return <div className={styles.container}>Cargando parámetros...</div>;
+  }
 
-  // Una vez montado, si no existe el asistente, disparamos 404
-  if (!assistant) return notFound();
+  if (!assistant) {
+    return notFound();
+  }
 
   const handleSave = () => {
     updateAssistant(assistant.id, { rules });
@@ -55,6 +53,7 @@ export function AssistantTrainingClient({ id }: Props) {
       <div className={styles.layout}>
         <section className={styles.card}>
           <h2 className={styles.sectionTitle}>{t('title')}</h2>
+
           <Textarea
             label={t('rules')}
             value={rules}
@@ -62,6 +61,7 @@ export function AssistantTrainingClient({ id }: Props) {
             placeholder={tAssistants('form.placeholders.rules')}
             rows={10}
           />
+
           <div className={styles.trainingActions}>
             <Button onClick={handleSave}>{t('save')}</Button>
             {saved && <span className={styles.saved}>{t('saved')}</span>}

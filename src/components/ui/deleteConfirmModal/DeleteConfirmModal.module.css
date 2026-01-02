@@ -1,26 +1,15 @@
-.content p {
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
-}
-
-.content strong {
-  color: var(--text-primary);
-}
-
-.actions {
+.content {
   display: flex;
-  justify-content: flex-end;
-  gap: 12px;
+  flex-direction: column;
 }
 
 .content p {
   font-size: 15px;
   line-height: 1.6;
+  letter-spacing: -0.01em;
+
   color: var(--text-secondary);
   margin-bottom: 28px;
-  letter-spacing: -0.01em;
 }
 
 .content strong {
@@ -28,6 +17,7 @@
   font-weight: 600;
 }
 
+/* Acciones */
 .actions {
   display: flex;
   justify-content: flex-end;
@@ -35,14 +25,13 @@
   padding-top: 8px;
 }
 
-/* Ajuste para que el botón de peligro sea sutil pero claro */
-.actions :global(.btn-danger) {
-  background-color: var(--danger);
-  border: none;
-  box-shadow: 0 4px 12px rgba(227, 0, 0, 0.2);
-}
+/* Mobile: botones a ancho completo */
+@media (max-width: 480px) {
+  .actions {
+    flex-direction: column-reverse;
+  }
 
-.actions :global(.btn-danger:hover) {
-  background-color: #bd0000;
-  transform: translateY(-1px);
+  .actions > * {
+    width: 100%;
+  }
 }

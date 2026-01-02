@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useTranslations } from 'next-intl';
 import styles from './Modal.module.css';
 
 interface ModalProps {
@@ -14,9 +13,7 @@ interface ModalProps {
 }
 
 export function Modal({ open, title, onClose, children, footer, width = 'md' }: ModalProps) {
-  const t = useTranslations('common'); // Hook para traducciones
   const dialogRef = useRef<HTMLDivElement>(null);
-  const lastActiveElement = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (open) {

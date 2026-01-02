@@ -18,6 +18,7 @@ export const SkeletonCard = () => {
       <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
         <div className={`${styles.skeleton} ${styles.button}`}></div>
         <div className={`${styles.skeleton} ${styles.button}`}></div>
+        <div className={`${styles.skeleton} ${styles.button}`}></div>
       </div>
     </div>
   );

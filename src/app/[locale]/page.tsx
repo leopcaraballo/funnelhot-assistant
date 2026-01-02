@@ -16,6 +16,8 @@ import { LanguageSwitcher } from '@/components/ui/languageSwitcher/LanguageSwitc
 import { SkeletonCard } from '@/components/ui/skeletonCard/SkeletonCard';
 import { DeleteConfirmModal } from '@/components/ui/deleteConfirmModal/DeleteConfirmModal';
 
+import styles from './HomePage.module.css';
+
 export default function HomePage() {
   const t = useTranslations('home');
   const tAssistants = useTranslations('assistants');
@@ -23,20 +25,15 @@ export default function HomePage() {
   const router = useRouter();
   const { assistants, mounted, deleteAssistant, createAssistant, updateAssistant } = useAssistants();
 
-  // Estados para controlar la visibilidad de los Modales
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
-  // Estados para manejar el asistente seleccionado (edición o borrado)
   const [editing, setEditing] = useState<Assistant | null>(null);
   const [assistantToDelete, setAssistantToDelete] = useState<Assistant | null>(null);
 
-  // Estado de carga cosmético para suavizar la entrada de datos (Luxury UX)
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Un tiempo de 800ms permite que el usuario perciba el estado de carga
-    // sin que la espera resulte frustrante.
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
@@ -52,25 +49,15 @@ export default function HomePage() {
   };
 
   const handleDeleteConfirm = () => {
-    if (assistantToDelete) {
-      deleteAssistant(assistantToDelete.id);
-      setDeleteModalOpen(false);
-      setAssistantToDelete(null);
-    }
+    if (!assistantToDelete) return;
+    deleteAssistant(assistantToDelete.id);
+    setDeleteModalOpen(false);
+    setAssistantToDelete(null);
   };
 
-  // Estado de carga inicial y montaje de cliente
   if (!mounted || loading) {
     return (
-      <div
-        style={{
-          padding: '40px 24px',
-          display: 'grid',
-          gap: 24,
-          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-          maxWidth: 1200,
-          margin: '0 auto',
-        }}>
+      <div className={styles.skeletonGrid}>
         {Array.from({ length: 6 }).map((_, idx) => (
           <SkeletonCard key={idx} />
         ))}
@@ -79,33 +66,18 @@ export default function HomePage() {
   }
 
   return (
-    <div style={{ padding: '40px 24px', maxWidth: 1200, margin: '0 auto' }}>
-      {/* Header con Título y Acciones Globales */}
-      <header
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 48,
-        }}>
-        <h1
-          style={{
-            fontSize: '32px',
-            fontWeight: '700',
-            letterSpacing: '-0.03em',
-            color: 'var(--text-primary)',
-          }}>
-          {t('title')}
-        </h1>
-        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>{t('title')}</h1>
+
+        <div className={styles.headerActions}>
           <LanguageSwitcher />
           <Button onClick={() => setModalOpen(true)}>{t('create')}</Button>
         </div>
       </header>
 
-      {/* Listado de Asistentes o Estado Vacío */}
       {assistants.length === 0 ? (
-        <div style={{ marginTop: 60 }}>
+        <div className={styles.emptyWrapper}>
           <EmptyState
             title={t('emptyTitle')}
             description={t('emptyDescription')}
@@ -114,12 +86,7 @@ export default function HomePage() {
           />
         </div>
       ) : (
-        <div
-          style={{
-            display: 'grid',
-            gap: 28,
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-          }}>
+        <div className={styles.grid}>
           {assistants.map(assistant => (
             <AssistantCard
               key={assistant.id}
@@ -138,7 +105,6 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* Modal Principal: Creación y Edición de Asistentes */}
       <Modal
         open={modalOpen}
         title={editing ? tAssistants('edit') : t('create')}
@@ -156,7 +122,6 @@ export default function HomePage() {
         />
       </Modal>
 
-      {/* Modal de Confirmación de Borrado: UX Premium para evitar borrados accidentales */}
       <DeleteConfirmModal
         isOpen={deleteModalOpen}
         assistantName={assistantToDelete?.name || ''}

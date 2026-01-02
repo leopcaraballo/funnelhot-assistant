@@ -4,50 +4,48 @@
   color-scheme: light;
 
   /* --- Superficies --- */
-  /* Un gris "fresco" que evita que la pantalla se vea amarillenta */
-  --bg-page: #fbfbfd;
+  /* Gris frío ultra limpio, estilo Apple hardware pages */
+  --bg-page: #f5f5f7;
   --bg-card: #ffffff;
-  /* El efecto cristal ahora es más translúcido y vívido */
-  --bg-glass: rgba(255, 255, 255, 0.72);
-  --bg-modal: rgba(0, 0, 0, 0.4);
+  --bg-glass: rgba(255, 255, 255, 0.78);
+  --bg-modal: rgba(0, 0, 0, 0.45);
 
   /* --- Tipografía --- */
-  /* Apple usa un negro ligeramente suavizado para reducir fatiga ocular */
-  --text-primary: #1d1d1f;
-  --text-secondary: #6e6e73; /* Gris medio con mejor legibilidad */
-  --text-tertiary: #a1a1a6;
+  /* Negro Apple calibrado (no 100% negro) */
+  --text-primary: #1c1c1e;
+  --text-secondary: #636366;
+  --text-tertiary: #8e8e93;
 
-  /* --- Colores de Marca (Afinados) --- */
-  /* Un azul con un toque más de profundidad (Luxury Blue) */
-  --primary: #0066cc;
-  --primary-hover: #0077ed;
-  --primary-light: rgba(0, 102, 204, 0.08);
+  /* --- Colores de Marca --- */
+  /* Azul profundo, serio, enterprise premium */
+  --primary: #005ac1;
+  --primary-hover: #0071e3;
+  --primary-light: rgba(0, 90, 193, 0.1);
 
-  /* Tonos de sistema equilibrados */
-  --danger: #e30000;
-  --success: #28a745;
+  /* --- Estados de sistema --- */
+  --danger: #d70015;
+  --success: #2e7d32;
   --warning: #ff9f0a;
 
-  /* --- Bordes y Divisiones --- */
-  /* Bordes basados en opacidad para que se adapten al fondo automáticamente */
-  --border: rgba(0, 0, 0, 0.08);
-  --border-light: rgba(0, 0, 0, 0.04);
+  /* --- Bordes --- */
+  --border: rgba(0, 0, 0, 0.06);
+  --border-light: rgba(0, 0, 0, 0.03);
 
-  /* --- Geometría (Squircle) --- */
+  /* --- Geometría --- */
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 22px; /* Más pronunciado para contenedores principales */
+  --radius-md: 14px;
+  --radius-lg: 24px;
 
-  /* --- Sombras de Oclusión Ambiental --- */
-  /* Apple no usa sombras negras planas, usa sombras difusas y multicapa */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 30px 60px rgba(0, 0, 0, 0.12);
+  /* --- Sombras (luxury-grade) --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.14);
 
   /* --- Animaciones --- */
-  /* Curva de Apple: Rápida al inicio, muy suave al final */
-  --transition-base: 400ms cubic-bezier(0.23, 1, 0.32, 1);
-  --backdrop-blur: blur(20px) saturate(180%);
+  --transition-base: 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  --backdrop-blur: blur(24px) saturate(180%);
 }
 
 body {
@@ -57,27 +55,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* El secreto del lujo es el aire: aumentamos ligeramente el interlineado */
-  line-height: 1.5;
-  letter-spacing: -0.02em; /* Un poco más cerrado para títulos y cuerpo profesional */
+  line-height: 1.55;
+  letter-spacing: -0.015em;
 
-  /* Evita el scroll horizontal accidental */
   overflow-x: hidden;
-  -webkit-background-composite: var(--primary-light);
 }
 
-/* Selección de texto elegante */
+/* Selección de texto refinada */
 ::selection {
-  background-color: rgba(0, 102, 204, 0.15);
+  background-color: rgba(0, 113, 227, 0.18);
   color: var(--primary);
 }
 
-/* Títulos con peso Apple */
+/* Títulos */
 h1,
 h2,
 h3,
 h4 {
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.2;
+  line-height: 1.15;
 }

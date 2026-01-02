@@ -1,35 +1,36 @@
-/* AssistantForm.module.css */
-
 .container {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /* Animación suave al montar el componente */
   animation: fadeIn 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .header {
-  margin-bottom: 8px;
-  text-align: center; /* Centrado es muy elegante en modales */
+  text-align: center;
 }
 
 .title {
   font-size: 22px;
   font-weight: 600;
   color: var(--text-primary);
-  letter-spacing: -0.02em; /* Tracking ajustado Apple-style */
+  letter-spacing: -0.02em;
   margin: 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 4px;
 }
 
 .stepIndicator {
   display: block;
+  margin-top: 6px;
   font-size: 13px;
   color: var(--text-tertiary);
   font-weight: 500;
-  margin-top: 4px;
 }
 
-/* Contenedor para los campos del formulario con animación */
 .stepContent {
   display: flex;
   flex-direction: column;
@@ -37,47 +38,45 @@
   animation: slideUp 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Grupo especial para los porcentajes (Estilo iOS Grouped List) */
 .percentGroup {
-  background-color: rgba(0, 0, 0, 0.03); /* Fondo gris muy sutil */
+  background-color: rgba(0, 0, 0, 0.03);
   border-radius: var(--radius-md);
   padding: 16px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
   border: 1px solid var(--border);
 }
 
 .percentLabel {
-  grid-column: 1 / -1;
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 4px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.gridInputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
 .errorMessage {
   color: var(--danger);
   font-size: 13px;
   font-weight: 500;
-  background-color: rgba(255, 59, 48, 0.1); /* Fondo rojo muy suave */
+  background-color: rgba(255, 59, 48, 0.08);
   padding: 8px 12px;
   border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .actions {
   display: flex;
-  justify-content: flex-end; /* Botones a la derecha */
+  justify-content: flex-end;
   gap: 12px;
   margin-top: 12px;
   padding-top: 20px;
-  border-top: 1px solid var(--border); /* Separador sutil */
+  border-top: 1px solid var(--border);
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -90,7 +89,7 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;

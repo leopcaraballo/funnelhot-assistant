@@ -1,88 +1,97 @@
-/* Input.module.css */
-
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Un poco más de aire */
+  gap: 8px;
+
   transition: transform 200ms ease;
 }
 
 .label {
   font-size: 13px;
-  font-weight: 600; /* Apple usa semibold para etiquetas de sistema */
-  color: var(--text-secondary);
-  padding-left: 4px; /* Alineación óptica con el texto interno */
+  font-weight: 600;
   letter-spacing: -0.01em;
+
+  color: var(--text-secondary);
+  padding-left: 4px;
 }
 
+/* Input base */
 .input {
-  /* En lugar de blanco con borde, usamos un fondo gris "Off-white" */
-  background-color: rgba(0, 0, 0, 0.05);
-  border: 1px solid transparent; /* El borde es invisible hasta el focus */
-  border-radius: var(--radius-md); /* Más redondeado (14px aprox) */
+  background-color: rgba(0, 0, 0, 0.04);
+
+  border-radius: var(--radius-md);
+  border: none;
+
+  /* Borde interno premium */
+  box-shadow: inset 0 0 0 1px var(--border);
 
   padding: 12px 16px;
-  font-size: 15px; /* Tamaño de lectura confortable en iOS */
+  font-size: 15px;
   color: var(--text-primary);
 
-  /* Transición fluida para el borde y el brillo */
   transition:
     background-color 200ms ease,
-    border-color 200ms ease,
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .input::placeholder {
   color: var(--text-tertiary);
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
-/* Hover: ligeramente más oscuro para invitar al click */
+/* Hover */
 .input:hover:not(:disabled) {
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: rgba(0, 0, 0, 0.055);
 }
 
-/* Focus: El momento del lujo. Fondo blanco puro y anillo de luz sutil */
+/* Focus */
 .input:focus {
   outline: none;
   background-color: #ffffff;
-  border-color: var(--primary);
-  /* Sombra de enfoque Apple: muy difusa y ligera */
-  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+
+  box-shadow:
+    inset 0 0 0 1px var(--primary),
+    0 0 0 4px var(--primary-light);
 }
 
-/* Estado de Error: Usamos el rojo de sistema de Apple con fondo rosado sutil */
+/* Error */
 .hasError .input {
-  background-color: rgba(255, 59, 48, 0.05);
-  border-color: var(--danger);
+  background-color: rgba(255, 59, 48, 0.04);
+
+  box-shadow: inset 0 0 0 1px var(--danger);
 }
 
 .hasError .input:focus {
-  box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.12);
+  box-shadow:
+    inset 0 0 0 1px var(--danger),
+    0 0 0 4px rgba(255, 59, 48, 0.12);
 }
 
 .error {
   font-size: 12px;
   font-weight: 500;
+
   color: var(--danger);
   padding-left: 4px;
   margin-top: 2px;
-  animation: slideIn 200ms ease-out;
+
+  animation: error-appear 180ms ease-out;
 }
 
+/* Disabled */
 .disabled {
-  opacity: 0.5;
-  filter: grayscale(1);
+  opacity: 0.55;
 }
 
 .disabled .input {
   cursor: not-allowed;
 }
 
-@keyframes slideIn {
+/* Animación refinada */
+@keyframes error-appear {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
   to {
     opacity: 1;

@@ -58,7 +58,8 @@
    npm run dev
    ```
 4. **Acceder a la aplicación**:
-   - Acceder a la aplicación:
-     -- Localmente: http://localhost:3000
-     -- Red local: según configuración del sistema operativo
-     -- Online: https://funnelhot-assistant.vercel.app
+
+- **Acceder a la aplicación**:
+- Localmente: http://localhost:3000
+- Red local: según configuración del sistema operativo
+- Online: https://funnelhot-assistant.vercel.app

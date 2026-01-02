@@ -1,0 +1,16 @@
+# Next.js build output directories
+.next/
+out/
+build/
+
+# Node module directory
+node_modules/
+
+# Lock files can sometimes cause issues or are unnecessary to format
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Optional: Other temporary or generated files/folders
+**/dist/**
+**/__tmp__/**

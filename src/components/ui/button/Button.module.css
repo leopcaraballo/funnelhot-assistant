@@ -1,0 +1,118 @@
+/* Button.module.css */
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  /* El radio de Apple: Squircle o circular */
+  border-radius: var(--radius-md);
+  font-weight: 600; /* Apple prefiere fuentes un poco más pesadas en botones */
+
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+
+  /* Transiciones suaves y naturales */
+  transition:
+    background-color var(--transition-base),
+    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 200ms ease;
+}
+
+/* Efecto de presión física (Haptic feedback) */
+.button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.md {
+  padding: 12px 24px;
+  font-size: 15px; /* Estándar iOS */
+}
+
+.sm {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* --- Variante Primary (SF Blue) --- */
+.primary {
+  background-color: var(--primary);
+  color: #ffffff;
+  /* Sombra suave del mismo color del botón */
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: 0 6px 20px rgba(0, 113, 227, 0.35);
+}
+
+/* --- Variante Secondary (Gris suave/Glass) --- */
+.secondary {
+  background-color: rgba(0, 0, 0, 0.05); /* Muy sutil */
+  color: var(--text-primary);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* --- Variante Danger (Apple Red) --- */
+.danger {
+  background-color: var(--danger);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: #eb352a;
+}
+
+/* --- Estados --- */
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.loading {
+  cursor: default;
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+/* Si el contenido se oculta al cargar, que se desplace sutilmente */
+.loading .content {
+  opacity: 0;
+  transform: translateY(-2px);
+}
+
+/* Spinner minimalista */
+.loader {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 200ms ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

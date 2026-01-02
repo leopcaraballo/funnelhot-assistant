@@ -1,0 +1,69 @@
+{
+  "common": {
+    "loading": "Procesando…",
+    "save": "Guardar",
+    "next": "Siguiente",
+    "cancel": "Cancelar",
+    "back": "Atrás",
+    "reset": "Reiniciar",
+    "delete": "Eliminar",
+    "confirmDelete": "¿Estás seguro de eliminar este asistente?",
+    "step": "Paso {current} de {total}"
+  },
+  "home": {
+    "title": "Asistentes de IA",
+    "create": "Crear Asistente",
+    "emptyTitle": "No hay asistentes",
+    "emptyDescription": "Crea tu primer asistente de IA para comenzar."
+  },
+  "assistants": {
+    "name": "Nombre",
+    "language": "Idioma",
+    "tone": "Tono",
+    "create": "Crear Asistente",
+    "edit": "Editar",
+    "train": "Entrenar",
+    "delete": "Eliminar",
+    "form": {
+      "createTitle": "Crear Asistente",
+      "editTitle": "Editar Asistente",
+      "step1Title": "Datos básicos",
+      "step2Title": "Configuración de respuestas",
+      "rules": "Reglas y Comportamiento",
+      "placeholders": {
+        "name": "Ej. Soporte Técnico",
+        "rules": "Ej. Ayudas a resolver problemas técnicos de manera clara y paso a paso..."
+      },
+      "responseLengthTitle": "Longitud de las respuestas (%)",
+      "short": "Cortas",
+      "medium": "Medias",
+      "long": "Largas",
+      "audioEnabled": "Habilitar respuestas de audio",
+      "errors": {
+        "nameLength": "El nombre debe tener al menos 3 caracteres",
+        "totalPercentage": "La suma de las respuestas debe dar 100%"
+      }
+    },
+    "tones": {
+      "Formal": "Formal",
+      "Casual": "Casual",
+      "Profesional": "Profesional",
+      "Amigable": "Amigable"
+    }
+  },
+  "training": {
+    "title": "Entrenamiento",
+    "rules": "Reglas e instrucciones",
+    "save": "Guardar",
+    "saved": "Configuración guardada correctamente",
+    "chatTitle": "Chat simulado"
+  },
+  "chat": {
+    "messageLabel": "Mensaje",
+    "placeholder": "Escribe un mensaje...",
+    "send": "Enviar",
+    "reset": "Reiniciar chat",
+    "typing": "Escribiendo...",
+    "startConversation": "Empieza la conversación..."
+  }
+}

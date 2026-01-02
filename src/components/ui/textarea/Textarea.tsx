@@ -1,0 +1,43 @@
+'use client';
+
+import { useId, forwardRef } from 'react';
+import styles from './Textarea.module.css';
+
+interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  label: string;
+  error?: string;
+}
+
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ label, error, id, className, ...props }, ref) => {
+    const generatedId = useId();
+    const textareaId = id ?? generatedId;
+
+    const textareaClass = [styles.textarea, error ? styles.textareaError : '', className || ''].join(' ').trim();
+
+    return (
+      <div className={styles.wrapper}>
+        <label htmlFor={textareaId} className={styles.label}>
+          {label}
+        </label>
+
+        <textarea
+          id={textareaId}
+          ref={ref}
+          className={textareaClass}
+          aria-invalid={!!error}
+          spellCheck='false'
+          {...props}
+        />
+
+        {error && (
+          <span className={styles.error} role='alert'>
+            {error}
+          </span>
+        )}
+      </div>
+    );
+  },
+);
+
+Textarea.displayName = 'Textarea';

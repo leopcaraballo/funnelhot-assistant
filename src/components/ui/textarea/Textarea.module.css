@@ -1,0 +1,98 @@
+/* Textarea.module.css */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600; /* Apple Semibold */
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding-left: 4px;
+  letter-spacing: -0.01em;
+}
+
+.textarea {
+  min-height: 120px;
+  padding: 14px 16px; /* Más padding para que el texto respire */
+  border-radius: var(--radius-md); /* 14px para mayor suavidad */
+
+  /* Estilo Apple: Fondo gris en lugar de borde */
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+
+  color: var(--text-primary);
+  font-size: 15px; /* Tamaño de lectura confortable */
+  line-height: 1.6;
+  font-family: inherit;
+  resize: vertical;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+/* Scrollbar estilizada sutilmente para el área de texto */
+.textarea::-webkit-scrollbar {
+  width: 6px;
+}
+.textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.textarea:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.textarea:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: var(--primary);
+  /* Anillo de enfoque ultra suave */
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
+}
+
+.textarea::placeholder {
+  color: var(--text-tertiary);
+  opacity: 0.8;
+}
+
+/* Estado de Error */
+.textareaError {
+  background-color: rgba(255, 59, 48, 0.05);
+  border-color: var(--danger);
+}
+
+.textareaError:focus {
+  box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.12);
+}
+
+.error {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--danger);
+  padding-left: 4px;
+  margin-top: 2px;
+  animation: slideIn 200ms ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

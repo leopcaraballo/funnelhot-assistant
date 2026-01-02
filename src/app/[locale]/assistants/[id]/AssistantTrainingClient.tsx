@@ -1,0 +1,80 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { notFound } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useAssistants } from '@/hooks/useAssistants';
+import { Textarea } from '@/components/ui/textarea/Textarea';
+import { Button } from '@/components/ui/button/Button';
+import { ChatWindow } from '@/components/chat/chatWindow/ChatWindow';
+import styles from './AssistantTraining.module.css';
+
+interface Props {
+  id: string;
+}
+
+export function AssistantTrainingClient({ id }: Props) {
+  const t = useTranslations('training');
+  const tAssistants = useTranslations('assistants');
+  const { getAssistantById, updateAssistant, mounted } = useAssistants();
+
+  const [rules, setRules] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  const assistant = getAssistantById(id);
+
+  useEffect(() => {
+    if (assistant) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setRules(assistant.rules ?? '');
+    }
+  }, [assistant]);
+
+  // Si el hook de almacenamiento no ha cargado (mounted), mostramos un loader
+  if (!mounted) return <div className={styles.container}>Cargando parámetros...</div>;
+
+  // Una vez montado, si no existe el asistente, disparamos 404
+  if (!assistant) return notFound();
+
+  const handleSave = () => {
+    updateAssistant(assistant.id, { rules });
+    setSaved(true);
+    setTimeout(() => setSaved(false), 3000);
+  };
+
+  return (
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>{assistant.name}</h1>
+        <p className={styles.meta}>
+          <span className={styles.badge}>{assistant.language.toUpperCase()}</span>
+          <span> · {tAssistants(`tones.${assistant.tone}`)}</span>
+        </p>
+      </header>
+
+      <div className={styles.layout}>
+        <section className={styles.card}>
+          <h2 className={styles.sectionTitle}>{t('title')}</h2>
+          <Textarea
+            label={t('rules')}
+            value={rules}
+            onChange={e => setRules(e.target.value)}
+            placeholder={tAssistants('form.placeholders.rules')}
+            rows={10}
+          />
+          <div className={styles.trainingActions}>
+            <Button onClick={handleSave}>{t('save')}</Button>
+            {saved && <span className={styles.saved}>{t('saved')}</span>}
+          </div>
+        </section>
+
+        <section className={styles.card}>
+          <h2 className={styles.sectionTitle}>{t('chatTitle')}</h2>
+          <div className={styles.chatWrapper}>
+            <ChatWindow assistantId={assistant.id} assistantLanguage={assistant.language} />
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}

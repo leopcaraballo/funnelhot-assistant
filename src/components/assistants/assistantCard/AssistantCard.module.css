@@ -1,0 +1,83 @@
+/* AssistantCard.module.css */
+
+/* Contenedor específico para distribuir el contenido si la tarjeta crece */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  margin-bottom: 20px; /* Más espacio para respirar */
+}
+
+.header h3 {
+  font-size: 17px; /* Tamaño "Body" de Apple, muy legible */
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.015em; /* Tracking negativo para elegancia */
+  line-height: 1.3;
+}
+
+/* Transformamos la meta data en una lista elegante estilo iOS */
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+
+  /* Detalles de refinamiento */
+  padding-top: 16px;
+  border-top: 1px solid var(--border); /* Separador muy sutil */
+}
+
+.meta span {
+  display: flex;
+  justify-content: space-between; /* Etiqueta a la izq, valor a la der */
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* La etiqueta (Label) - Sutil y elegante */
+.meta strong {
+  font-weight: 500;
+  color: var(--text-secondary); /* Gris medio */
+}
+
+/* El valor - Oscuro y predominante */
+.meta span {
+  color: var(--text-primary); /* Casi negro */
+}
+
+.actions {
+  margin-top: auto; /* Empuja los botones al fondo si la tarjeta es alta */
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between; /* Empuja el valor al extremo derecho */
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-light); /* Separador muy sutil */
+}
+
+.metaRow:last-child {
+  border-bottom: none; /* Quita el borde en el último elemento */
+}
+
+.metaRow strong {
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.metaRow span {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+}

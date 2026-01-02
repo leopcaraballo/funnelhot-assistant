@@ -1,0 +1,93 @@
+/* LanguageSwitcher.module.css */
+
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+
+  /* Estilo Apple: Botón sutil sin bordes negros, fondo gris suave */
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.button:active {
+  transform: scale(0.96); /* Feedback físico */
+}
+
+/* El Dropdown al estilo macOS (Control Center) */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0; /* Lo alineamos a la derecha para evitar recortes */
+  min-width: 180px;
+
+  /* GLASSMORPHISM */
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Borde de luz superior */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+
+  padding: 6px; /* Aire interno para los items */
+  z-index: 1000;
+
+  /* Animación de despliegue */
+  animation: dropdown-pop 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: top right;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+
+  border: none;
+  border-radius: var(--radius-sm); /* Bordes redondeados dentro del menú */
+  background: transparent;
+
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+/* Hover estilo iOS: Azul brillante con texto blanco o fondo gris muy suave */
+.dropdownItem:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* Animación de escalado y aparición */
+@keyframes dropdown-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

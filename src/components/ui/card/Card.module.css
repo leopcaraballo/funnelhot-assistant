@@ -1,0 +1,41 @@
+/* Card.module.css */
+
+.card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+
+  /* Borde de luz sutil: clave para el look "Premium" */
+  /* En fondos claros se ve como una línea nítida, en oscuros como un brillo */
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  outline: 1px solid rgba(0, 0, 0, 0.05);
+
+  /* Usamos la sombra multicapa definida en globals.css */
+  box-shadow: var(--shadow-sm);
+
+  padding: 24px; /* Aumentamos el aire interno para mayor lujo */
+
+  /* Transición con curva de Apple (Efecto elástico) */
+  transition:
+    box-shadow 400ms cubic-bezier(0.25, 1, 0.5, 1),
+    transform 400ms cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 200ms ease;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  /* Elevación suave hacia la cámara */
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-md);
+
+  /* Al elevarse, el borde de luz puede hacerse un poco más visible */
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Variante opcional para efecto cristal si la tarjeta está sobre un color */
+.glass {
+  background-color: var(--bg-glass);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+}

@@ -1,0 +1,64 @@
+/* EmptyState.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  /* Más espacio vertical para que el vacío se sienta intencional y no un error */
+  padding: 80px 24px;
+
+  /* En lugar de una tarjeta con sombra, lo dejamos flotar limpiamente 
+     o usamos un borde ultra sutil si es necesario delimitarlo */
+  background-color: transparent;
+  border-radius: var(--radius-lg);
+
+  /* Animación de entrada suave (Fade in + Slide up) */
+  animation: empty-state-appear 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.title {
+  font-size: 24px; /* Un poco más grande para que sea el foco */
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.description {
+  max-width: 380px; /* Un poco más estrecho para mejorar la lectura */
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 32px; /* Más espacio antes del botón */
+
+  /* Suavizado de fuente para que el gris se vea más premium */
+  -webkit-font-smoothing: antialiased;
+}
+
+.action {
+  /* No necesita estilos complejos, el componente Button ya hace el trabajo pesado */
+  transform: translateY(0);
+  transition: transform 200ms ease;
+}
+
+/* Animación sutil */
+@keyframes empty-state-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Opcional: un contenedor para un icono */
+.iconWrapper {
+  font-size: 48px;
+  margin-bottom: 24px;
+  color: var(--text-tertiary);
+  opacity: 0.8;
+}

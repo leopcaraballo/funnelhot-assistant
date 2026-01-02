@@ -1,0 +1,69 @@
+{
+  "common": {
+    "loading": "Processando…",
+    "save": "Salvar",
+    "next": "Próximo",
+    "cancel": "Cancelar",
+    "back": "Voltar",
+    "reset": "Redefinir",
+    "delete": "Excluir",
+    "confirmDelete": "Tem certeza de que deseja excluir este assistente?",
+    "step": "Passo {current} de {total}"
+  },
+  "home": {
+    "title": "Assistentes de IA",
+    "create": "Criar Assistente",
+    "emptyTitle": "Nenhum assistente",
+    "emptyDescription": "Crie seu primeiro assistente de IA para começar."
+  },
+  "assistants": {
+    "name": "Nome",
+    "language": "Idioma",
+    "tone": "Tom",
+    "create": "Criar Assistente",
+    "edit": "Editar",
+    "train": "Treinar",
+    "delete": "Excluir",
+    "form": {
+      "createTitle": "Criar Assistente",
+      "editTitle": "Editar Assistente",
+      "step1Title": "Dados básicos",
+      "step2Title": "Configuração de respostas",
+      "rules": "Regras e Comportamento",
+      "placeholders": {
+        "name": "Ex: Suporte Técnico",
+        "rules": "Ex: Você ajuda a resolver problemas técnicos de forma clara e passo a paso..."
+      },
+      "responseLengthTitle": "Comprimento das respostas (%)",
+      "short": "Curtas",
+      "medium": "Médias",
+      "long": "Longas",
+      "audioEnabled": "Habilitar respostas de áudio",
+      "errors": {
+        "nameLength": "O nome deve ter pelo menos 3 caracteres",
+        "totalPercentage": "A soma das respostas deve ser 100%"
+      }
+    },
+    "tones": {
+      "Formal": "Formal",
+      "Casual": "Casual",
+      "Profesional": "Profissional",
+      "Amigable": "Amigável"
+    }
+  },
+  "training": {
+    "title": "Treinamento",
+    "rules": "Regras e instruções",
+    "save": "Salvar",
+    "saved": "Configuração salva com sucesso",
+    "chatTitle": "Chat simulado"
+  },
+  "chat": {
+    "messageLabel": "Mensagem",
+    "placeholder": "Digite uma mensagem...",
+    "send": "Enviar",
+    "reset": "Reiniciar chat",
+    "typing": "Digitando...",
+    "startConversation": "Comece a conversa..."
+  }
+}

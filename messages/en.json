@@ -1,0 +1,69 @@
+{
+  "common": {
+    "loading": "Processing…",
+    "save": "Save",
+    "next": "Next",
+    "cancel": "Cancel",
+    "back": "Back",
+    "reset": "Reset",
+    "delete": "Delete",
+    "confirmDelete": "Are you sure you want to delete this assistant?",
+    "step": "Step {current} of {total}"
+  },
+  "home": {
+    "title": "AI Assistants",
+    "create": "Create Assistant",
+    "emptyTitle": "No assistants",
+    "emptyDescription": "Create your first AI assistant to get started."
+  },
+  "assistants": {
+    "name": "Name",
+    "language": "Language",
+    "tone": "Tone",
+    "create": "Create Assistant",
+    "edit": "Edit",
+    "train": "Train",
+    "delete": "Delete",
+    "form": {
+      "createTitle": "Create Assistant",
+      "editTitle": "Edit Assistant",
+      "step1Title": "Basic data",
+      "step2Title": "Response configuration",
+      "rules": "Rules and Behavior",
+      "placeholders": {
+        "name": "e.g., Tech Support",
+        "rules": "e.g., You help solve technical problems clearly and step by step..."
+      },
+      "responseLengthTitle": "Response length (%)",
+      "short": "Short",
+      "medium": "Medium",
+      "long": "Long",
+      "audioEnabled": "Enable audio responses",
+      "errors": {
+        "nameLength": "Name must be at least 3 characters",
+        "totalPercentage": "The sum of responses must equal 100%"
+      }
+    },
+    "tones": {
+      "Formal": "Formal",
+      "Casual": "Casual",
+      "Profesional": "Professional",
+      "Amigable": "Friendly"
+    }
+  },
+  "training": {
+    "title": "Training",
+    "rules": "Rules and instructions",
+    "save": "Save",
+    "saved": "Settings saved successfully",
+    "chatTitle": "Simulated chat"
+  },
+  "chat": {
+    "messageLabel": "Message",
+    "placeholder": "Type a message...",
+    "send": "Send",
+    "reset": "Reset chat",
+    "typing": "Typing...",
+    "startConversation": "Start the conversation..."
+  }
+}

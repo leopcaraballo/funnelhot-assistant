@@ -1,0 +1,77 @@
+/* SkeletonCard.module.css */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px; /* Coherente con nuestra Card real */
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Base del esqueleto con el efecto de barrido */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: #efeff4; /* Gris suave de Apple para esqueletos */
+  border-radius: var(--radius-sm);
+}
+
+/* El brillo que recorre los elementos */
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.title {
+  height: 20px;
+  width: 60%;
+  border-radius: var(--radius-sm);
+}
+
+.description {
+  height: 14px;
+  width: 90%;
+  margin-top: 4px;
+}
+
+.metaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.line {
+  height: 12px;
+  width: 100%;
+}
+
+.button {
+  height: 36px;
+  width: 80px;
+  border-radius: 999px; /* Pill shape como nuestros botones reales */
+  margin-top: 8px;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

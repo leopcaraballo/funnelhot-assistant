@@ -20,7 +20,6 @@
   - Tono: Formal, Casual, Profesional o Amigable
 - **Paso 2 – Configuración de respuestas**:
   - Distribución de longitud de respuestas (Cortas, Medias, Largas), cuya suma debe ser exactamente 100%.
-  - Opción para habilitar respuestas en audio.
 - **Persistencia**: Todos los datos se almacenan en `localStorage` para mantenerlos después de refrescar la página.
 
 ### 3. Centro de Entrenamiento y Simulación

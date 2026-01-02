@@ -20,7 +20,6 @@ export function AssistantTrainingClient({ id }: Props) {
   const tAssistants = useTranslations('assistants');
 
   const { getAssistantById, updateAssistant, mounted } = useAssistants();
-
   const assistant = getAssistantById(id);
 
   const [rules, setRules] = useState(() => assistant?.rules ?? '');
@@ -51,26 +50,35 @@ export function AssistantTrainingClient({ id }: Props) {
       </header>
 
       <div className={styles.layout}>
-        <section className={styles.card}>
-          <h2 className={styles.sectionTitle}>{t('title')}</h2>
+        {/* RULES */}
+        <section className={styles.rulesSection}>
+          <div className={styles.rulesHeader}>
+            <h2 className={styles.sectionTitle}>{t('title')}</h2>
+          </div>
 
-          <Textarea
-            label={t('rules')}
-            value={rules}
-            onChange={e => setRules(e.target.value)}
-            placeholder={tAssistants('form.placeholders.rules')}
-            rows={10}
-          />
+          <div className={styles.rulesBody}>
+            <Textarea
+              label={t('rules')}
+              value={rules}
+              onChange={e => setRules(e.target.value)}
+              placeholder={tAssistants('form.placeholders.rules')}
+              rows={8}
+            />
+          </div>
 
-          <div className={styles.trainingActions}>
+          <div className={styles.rulesFooter}>
             <Button onClick={handleSave}>{t('save')}</Button>
             {saved && <span className={styles.saved}>{t('saved')}</span>}
           </div>
         </section>
 
-        <section className={styles.card}>
-          <h2 className={styles.sectionTitle}>{t('chatTitle')}</h2>
-          <div className={styles.chatWrapper}>
+        {/* CHAT */}
+        <section className={styles.chatSection}>
+          <div className={styles.chatHeader}>
+            <h2 className={styles.sectionTitle}>{t('chatTitle')}</h2>
+          </div>
+
+          <div className={styles.chatBody}>
             <ChatWindow assistantId={assistant.id} assistantLanguage={assistant.language} />
           </div>
         </section>

@@ -1,35 +1,36 @@
+/* =========================
+   CONTAINER
+========================= */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 48px 24px;
-  animation: fadeIn 400ms ease-out;
+  padding: 32px 20px;
 }
 
 .header {
-  margin-bottom: 40px;
-  padding-bottom: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--border);
 }
 
 .title {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
-  margin-bottom: 6px;
 }
 
 .meta {
+  margin-top: 6px;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-size: 14px;
   color: var(--text-secondary);
-  font-weight: 500;
 }
 
 .badge {
-  background-color: rgba(0, 113, 227, 0.1);
+  background: rgba(0, 113, 227, 0.12);
   color: var(--primary);
   padding: 4px 10px;
   border-radius: 999px;
@@ -37,85 +38,110 @@
   font-weight: 600;
 }
 
+/* =========================
+   LAYOUT
+========================= */
+
 .layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 420px 1fr;
   gap: 32px;
-  align-items: start;
+  align-items: stretch;
 }
 
-.card {
-  background-color: var(--bg-card);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  height: 480px;
+/* =========================
+   RULES PANEL
+========================= */
+
+.rulesSection {
   display: flex;
   flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  min-height: 420px;
 }
 
-.sectionTitle {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  margin-bottom: 20px;
+.rulesHeader {
+  padding: 20px 20px 0;
 }
 
-.trainingActions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: auto;
-  padding-top: 16px;
+.rulesBody {
+  padding: 16px 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.rulesFooter {
+  padding: 16px 20px;
   border-top: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 .saved {
   font-size: 14px;
   font-weight: 600;
   color: var(--success);
-  animation: slideInRight 250ms ease-out;
 }
 
-.chatWrapper {
+/* =========================
+   CHAT PANEL
+========================= */
+
+.chatSection {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  min-height: 420px;
+}
+
+.chatHeader {
+  padding: 20px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chatBody {
   flex: 1;
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  min-height: 0;
+  padding: 0 16px 16px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* =========================
+   TITLES
+========================= */
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+/* =========================
+   MOBILE
+========================= */
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .card {
-    height: auto;
+  .container {
+    padding: 24px 16px;
   }
 
-  .chatWrapper {
-    height: 560px;
+  .title {
+    font-size: 22px;
+  }
+
+  .rulesSection,
+  .chatSection {
+    min-height: unset;
   }
 }

@@ -1,5 +1,11 @@
 import type { AssistantLanguage } from '@/types/assistant';
 
+/**
+ * Mock chat responses by language.
+ *
+ * Used for development, previews, and UI states where a real
+ * assistant response is not required.
+ */
 export const MOCK_CHAT_RESPONSES: Record<AssistantLanguage, string[]> = {
   es: [
     'Entendido. ¿En qué más puedo ayudarte?',
@@ -9,6 +15,13 @@ export const MOCK_CHAT_RESPONSES: Record<AssistantLanguage, string[]> = {
     'Perfecto, he registrado esa información.',
     'Gracias por el detalle. Continuemos.',
     'De acuerdo. Estoy listo para ayudarte.',
+    'He comprendido tu solicitud.',
+    'Vamos paso a paso para resolverlo.',
+    'Te explico de forma clara y directa.',
+    'Déjame verificar esa información.',
+    'Buena observación. Sigamos desde ahí.',
+    'Tiene sentido. Continuemos.',
+    'Estoy procesando tu petición.',
   ],
 
   en: [
@@ -19,6 +32,13 @@ export const MOCK_CHAT_RESPONSES: Record<AssistantLanguage, string[]> = {
     'Perfect, I’ve noted that information.',
     'Thanks for the details. Let’s continue.',
     'Alright. I’m ready to help.',
+    'I understand your request.',
+    'Let’s break this down step by step.',
+    'Here is a clear and direct explanation.',
+    'Let me check that for you.',
+    'Good point. Let’s continue from there.',
+    'That makes sense.',
+    'I’m processing your request.',
   ],
 
   'pt-BR': [
@@ -29,5 +49,12 @@ export const MOCK_CHAT_RESPONSES: Record<AssistantLanguage, string[]> = {
     'Perfeito, registrei essa informação.',
     'Obrigado pelos detalhes. Vamos continuar.',
     'Certo. Estou pronto para ajudar.',
+    'Entendi sua solicitação.',
+    'Vamos analisar isso passo a passo.',
+    'Aqui está uma explicação clara e direta.',
+    'Vou verificar essa informação.',
+    'Bom ponto. Vamos continuar a partir daí.',
+    'Isso faz sentido.',
+    'Estou processando sua solicitação.',
   ],
 };

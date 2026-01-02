@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file ChatWindow.tsx
+ * @description Interface para la simulación de chat de entrenamiento.
+ * Gestiona el historial de mensajes, la persistencia en LocalStorage y respuestas simuladas.
+ */
+
 import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button/Button';
@@ -19,6 +25,9 @@ interface Props {
   assistantLanguage: AssistantLanguage;
 }
 
+/**
+ * Ventana de chat con scroll automático y persistencia por ID de asistente.
+ */
 export function ChatWindow({ assistantId, assistantLanguage }: Props) {
   const t = useTranslations('chat');
   const storageKey = `chat_history_${assistantId}`;
@@ -29,7 +38,9 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Carga inicial segura
+  /**
+   * Carga el historial guardado en el cliente tras el montaje inicial.
+   */
   useEffect(() => {
     const savedChat = localStorage.getItem(storageKey);
     if (savedChat) {
@@ -43,14 +54,18 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
     setIsHydrated(true);
   }, [storageKey]);
 
-  // Guardado persistente
+  /**
+   * Sincroniza el estado de los mensajes con LocalStorage.
+   */
   useEffect(() => {
     if (isHydrated) {
       localStorage.setItem(storageKey, JSON.stringify(messages));
     }
   }, [messages, storageKey, isHydrated]);
 
-  // Auto-scroll
+  /**
+   * Mantiene el scroll en la parte inferior al recibir o enviar mensajes.
+   */
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo({
@@ -60,6 +75,9 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
     }
   }, [messages, loading]);
 
+  /**
+   * Gestiona el envío de mensajes del usuario y genera respuesta automática.
+   */
   const sendMessage = () => {
     if (!input.trim() || loading) return;
 
@@ -68,6 +86,7 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
     setInput('');
     setLoading(true);
 
+    // Simulación de delay de procesamiento de la IA
     setTimeout(() => {
       const pool = MOCK_CHAT_RESPONSES[assistantLanguage] || MOCK_CHAT_RESPONSES['en'];
       const randomResponse = pool[Math.floor(Math.random() * pool.length)];
@@ -76,11 +95,15 @@ export function ChatWindow({ assistantId, assistantLanguage }: Props) {
     }, 1200);
   };
 
+  /**
+   * Limpia el historial de la conversación actual.
+   */
   const handleReset = () => {
     setMessages([]);
     localStorage.removeItem(storageKey);
   };
 
+  // Evita problemas de hidratación en SSR al depender de localStorage
   if (!isHydrated) return null;
 
   return (

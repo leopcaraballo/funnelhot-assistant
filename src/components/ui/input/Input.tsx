@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file Input.tsx
+ * @description A custom form input component with integrated labeling,
+ * error handling, and accessible state management.
+ */
+
 import { useId, forwardRef } from 'react';
 import styles from './Input.module.css';
 
@@ -9,11 +15,10 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   containerClassName?: string;
 }
 
-// No requiere cambios en la lógica, pero asegúrate de que
-// el uso de `styles.wrapper` y `styles.input` se mantenga.
-// Un pequeño detalle de lujo es añadir `spellCheck={false}`
-// en campos donde no sea necesario para evitar subrayados rojos feos.
-
+/**
+ * Standardized Input component using forwardRef and useId for accessibility.
+ * Includes spellCheck='false' by default for a cleaner UI in technical fields.
+ */
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, id, containerClassName, disabled, className, ...props }, ref) => {
     const generatedId = useId();
@@ -34,7 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           className={[styles.input, className].filter(Boolean).join(' ')}
           aria-invalid={!!error}
           disabled={disabled}
-          spellCheck='false' // Detalle de limpieza visual
+          spellCheck='false'
           {...props}
         />
 
@@ -47,4 +52,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     );
   },
 );
+
 Input.displayName = 'Input';

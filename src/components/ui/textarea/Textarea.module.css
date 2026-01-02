@@ -1,3 +1,7 @@
+/**
+ * Styles for multi-line inputs, focusing on typography and interactive depth.
+ */
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -18,11 +22,10 @@
   min-height: 120px;
   max-height: 280px;
   width: 100%;
-
   padding: 14px 16px;
   border-radius: var(--radius-md);
 
-  /* Superficie premium */
+  /* Premium surface using alpha transparency */
   background-color: rgba(0, 0, 0, 0.045);
   border: 1px solid transparent;
 
@@ -30,10 +33,9 @@
   font-size: 15px;
   line-height: 1.6;
   font-family: inherit;
-
   resize: vertical;
 
-  /* Profundidad sutil */
+  /* Subtle inner depth */
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
 
   transition:
@@ -53,7 +55,7 @@
   background-color: #ffffff;
   border-color: var(--primary);
 
-  /* Focus ring Apple real */
+  /* High-fidelity focus ring */
   box-shadow:
     inset 0 0 0 1px rgba(0, 0, 0, 0.04),
     0 0 0 4px rgba(0, 113, 227, 0.12);
@@ -64,7 +66,7 @@
   opacity: 0.75;
 }
 
-/* Scrollbar ultra discreta */
+/* --- Scrollbar Customization --- */
 .textarea::-webkit-scrollbar {
   width: 6px;
 }
@@ -78,7 +80,7 @@
   border-radius: 10px;
 }
 
-/* Error state elegante */
+/* --- Validation States --- */
 .textareaError {
   background-color: rgba(255, 59, 48, 0.045);
   border-color: var(--danger);
@@ -96,7 +98,6 @@
   color: var(--danger);
   padding-left: 4px;
   margin-top: 2px;
-
   animation: slideIn 200ms ease-out;
 }
 

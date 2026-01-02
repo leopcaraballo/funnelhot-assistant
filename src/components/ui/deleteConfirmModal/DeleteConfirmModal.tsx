@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file DeleteConfirmModal.tsx
+ * @description Dialog for assistant deletion using rich text translations.
+ * Handles dynamic content injection into localized strings.
+ */
+
 import { Modal } from '@/components/ui/modal/Modal';
 import { Button } from '@/components/ui/button/Button';
 import { useTranslations } from 'next-intl';
@@ -12,6 +18,10 @@ interface Props {
   assistantName: string;
 }
 
+/**
+ * Modal to confirm deletion. Uses t.rich to parse HTML-like tags within
+ * translation strings for consistent styling.
+ */
 export function DeleteConfirmModal({ isOpen, onClose, onConfirm, assistantName }: Props) {
   const t = useTranslations('common');
 
@@ -19,8 +29,11 @@ export function DeleteConfirmModal({ isOpen, onClose, onConfirm, assistantName }
     <Modal open={isOpen} onClose={onClose} title={t('confirmDelete')} width='sm'>
       <div className={styles.content}>
         <p>
-          Esta acción no se puede deshacer. El asistente <strong>{assistantName}</strong> y todo su historial de
-          entrenamiento serán eliminados permanentemente.
+          {t.rich('deleteWarning', {
+            name: assistantName,
+            // standard tag mapping to avoid INVALID_TAG errors
+            strong: chunks => <strong>{chunks}</strong>,
+          })}
         </p>
         <div className={styles.actions}>
           <Button variant='secondary' onClick={onClose}>

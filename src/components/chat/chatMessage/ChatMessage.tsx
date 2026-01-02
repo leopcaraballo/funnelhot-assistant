@@ -1,3 +1,10 @@
+'use client';
+
+/**
+ * @file ChatMessage.tsx
+ * @description Presentational component for individual message bubbles in the chat.
+ */
+
 import styles from './ChatMessage.module.css';
 
 interface Props {
@@ -5,6 +12,9 @@ interface Props {
   content: string;
 }
 
+/**
+ * Renders a chat bubble with styles that distinguish between user and assistant.
+ */
 export function ChatMessage({ role, content }: Props) {
   return (
     <div
@@ -13,7 +23,6 @@ export function ChatMessage({ role, content }: Props) {
         ${role === 'user' ? styles.user : styles.assistant}
       `}>
       <div className={styles.content}>
-        {/* Usamos un div interno o directamente p, pero permitimos saltos de línea */}
         <p style={{ whiteSpace: 'pre-wrap' }}>{content}</p>
       </div>
     </div>

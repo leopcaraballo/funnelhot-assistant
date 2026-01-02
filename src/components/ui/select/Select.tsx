@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file Select.tsx
+ * @description Custom dropdown select component with integrated labeling,
+ * validation states, and a customized chevron icon.
+ */
+
 import { useId, forwardRef } from 'react';
 import styles from './Select.module.css';
 
@@ -9,6 +15,10 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   containerClassName?: string;
 }
 
+/**
+ * Accessible Select component using forwardRef.
+ * Replaces default browser styling with a custom theme-compliant appearance.
+ */
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ label, error, id, disabled, children, containerClassName, className, ...props }, ref) => {
     const generatedId = useId();

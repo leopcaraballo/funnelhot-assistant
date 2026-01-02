@@ -1,6 +1,6 @@
-/* =========================
-   CONTAINER
-========================= */
+/**
+ * Layout and container styles for the training module.
+ */
 
 .container {
   max-width: 1200px;
@@ -38,10 +38,7 @@
   font-weight: 600;
 }
 
-/* =========================
-   LAYOUT
-========================= */
-
+/* Two-column layout for editing rules and chatting simultaneously */
 .layout {
   display: grid;
   grid-template-columns: 420px 1fr;
@@ -49,10 +46,7 @@
   align-items: stretch;
 }
 
-/* =========================
-   RULES PANEL
-========================= */
-
+/* --- Rules Panel --- */
 .rulesSection {
   display: flex;
   flex-direction: column;
@@ -87,10 +81,7 @@
   color: var(--success);
 }
 
-/* =========================
-   CHAT PANEL
-========================= */
-
+/* --- Chat Panel --- */
 .chatSection {
   display: flex;
   flex-direction: column;
@@ -112,20 +103,13 @@
   padding: 0 16px 16px;
 }
 
-/* =========================
-   TITLES
-========================= */
-
 .sectionTitle {
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.015em;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
+/* --- Responsive Adjustments --- */
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;

@@ -1,53 +1,61 @@
+/**
+ * Global design tokens and base styles.
+ *
+ * Defines the foundational visual system for the application,
+ * including color palette, spacing, radii, shadows, and typography.
+ * These variables are intended to be reused consistently across all UI layers.
+ */
+
 @import url('./reset.css');
 
 :root {
+  /* Enable light color scheme for supported user agents */
   color-scheme: light;
 
-  /* --- Superficies --- */
-  /* Gris frío ultra limpio, estilo Apple hardware pages */
+  /* Background colors */
   --bg-page: #f5f5f7;
   --bg-card: #ffffff;
   --bg-glass: rgba(255, 255, 255, 0.78);
   --bg-modal: rgba(0, 0, 0, 0.45);
 
-  /* --- Tipografía --- */
-  /* Negro Apple calibrado (no 100% negro) */
+  /* Text colors */
   --text-primary: #1c1c1e;
   --text-secondary: #636366;
   --text-tertiary: #8e8e93;
 
-  /* --- Colores de Marca --- */
-  /* Azul profundo, serio, enterprise premium */
+  /* Brand and semantic colors */
   --primary: #005ac1;
   --primary-hover: #0071e3;
   --primary-light: rgba(0, 90, 193, 0.1);
 
-  /* --- Estados de sistema --- */
   --danger: #d70015;
   --success: #2e7d32;
   --warning: #ff9f0a;
 
-  /* --- Bordes --- */
+  /* Borders */
   --border: rgba(0, 0, 0, 0.06);
   --border-light: rgba(0, 0, 0, 0.03);
 
-  /* --- Geometría --- */
+  /* Border radius scale */
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 24px;
 
-  /* --- Sombras (luxury-grade) --- */
+  /* Elevation and shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
-
   --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
-
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.14);
 
-  /* --- Animaciones --- */
+  /* Motion and effects */
   --transition-base: 420ms cubic-bezier(0.22, 1, 0.36, 1);
   --backdrop-blur: blur(24px) saturate(180%);
 }
 
+/**
+ * Base document styles.
+ *
+ * Establishes default background, typography, and text rendering behavior.
+ */
 body {
   background-color: var(--bg-page);
   color: var(--text-primary);
@@ -55,19 +63,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  line-height: 1.55;
   letter-spacing: -0.015em;
 
   overflow-x: hidden;
 }
 
-/* Selección de texto refinada */
+/**
+ * Text selection styling.
+ */
 ::selection {
   background-color: rgba(0, 113, 227, 0.18);
   color: var(--primary);
 }
 
-/* Títulos */
+/**
+ * Heading defaults.
+ */
 h1,
 h2,
 h3,

@@ -1,3 +1,7 @@
+/**
+ * Layout and typography for the delete confirmation modal content.
+ */
+
 .content {
   display: flex;
   flex-direction: column;
@@ -7,17 +11,17 @@
   font-size: 15px;
   line-height: 1.6;
   letter-spacing: -0.01em;
-
   color: var(--text-secondary);
   margin-bottom: 28px;
 }
 
+/* Highlighting the assistant name or critical info */
 .content strong {
   color: var(--text-primary);
   font-weight: 600;
 }
 
-/* Acciones */
+/* Action button container */
 .actions {
   display: flex;
   justify-content: flex-end;
@@ -25,7 +29,10 @@
   padding-top: 8px;
 }
 
-/* Mobile: botones a ancho completo */
+/**
+ * Mobile: Stack buttons vertically and reverse order to keep 
+ * the primary action (Delete) reachable at the top or bottom as per UX.
+ */
 @media (max-width: 480px) {
   .actions {
     flex-direction: column-reverse;

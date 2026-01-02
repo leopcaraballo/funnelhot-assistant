@@ -1,9 +1,18 @@
+/**
+ * CSS Reset.
+ *
+ * Normalizes default browser styles to provide a consistent baseline
+ * across browsers and devices. This file intentionally avoids opinionated
+ * styling and focuses only on predictability and accessibility.
+ */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Reset default margins, paddings, and typography inheritance */
 html,
 body,
 div,
@@ -93,6 +102,7 @@ video {
   vertical-align: baseline;
 }
 
+/* Ensure HTML5 semantic elements render correctly */
 article,
 aside,
 details,
@@ -107,6 +117,7 @@ section {
   display: block;
 }
 
+/* Base document defaults */
 body {
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
@@ -115,11 +126,13 @@ body {
   text-rendering: optimizeSpeed;
 }
 
+/* Remove default list styling */
 ol,
 ul {
   list-style: none;
 }
 
+/* Neutralize quotation marks */
 blockquote,
 q {
   quotes: none;
@@ -132,11 +145,13 @@ q:after {
   content: none;
 }
 
+/* Normalize table rendering */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
+/* Make media elements responsive by default */
 img,
 picture,
 video,
@@ -146,6 +161,7 @@ svg {
   max-width: 100%;
 }
 
+/* Inherit typography for form elements */
 input,
 button,
 textarea,
@@ -154,12 +170,14 @@ select {
   outline: none;
 }
 
+/* Standardize pointer behavior for interactive elements */
 a,
 button,
 label {
   cursor: pointer;
 }
 
+/* Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;

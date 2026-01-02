@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file AssistantCard.tsx
+ * @description Card component for displaying an assistant summary.
+ * Provides quick action triggers for editing, training, and deletion.
+ */
+
 import { useTranslations } from 'next-intl';
 import { Assistant } from '@/types/assistant';
 import styles from './AssistantCard.module.css';
@@ -13,17 +19,22 @@ interface Props {
   onTrain: () => void;
 }
 
-// Mapeo de idiomas fuera del componente para evitar recrearlo en cada render
+/**
+ * Static mapping of locale codes to display labels.
+ * Defined outside to prevent re-allocation on every render.
+ */
 const LANGUAGE_NAMES: Record<string, string> = {
   es: 'Español',
   en: 'English',
   'pt-BR': 'Português',
 };
 
+/**
+ * Renders assistant details and administrative controls.
+ */
 export function AssistantCard({ assistant, onEdit, onDelete, onTrain }: Props) {
   const t = useTranslations('assistants');
 
-  // Obtenemos el nombre del idioma o un fallback elegante
   const languageDisplayName = LANGUAGE_NAMES[assistant.language] || 'Unknown';
 
   return (

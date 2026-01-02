@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file HomePage.tsx
+ * @description Main dashboard for the AI Assistant Management module.
+ * Orchestrates listing, creation, editing, and deletion of assistants.
+ */
+
 import { useState, useEffect } from 'react';
 import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
@@ -18,6 +24,10 @@ import { DeleteConfirmModal } from '@/components/ui/deleteConfirmModal/DeleteCon
 
 import styles from './HomePage.module.css';
 
+/**
+ * Primary view component.
+ * Handles state management for modal visibility and hydration tracking.
+ */
 export default function HomePage() {
   const t = useTranslations('home');
   const tAssistants = useTranslations('assistants');
@@ -33,11 +43,17 @@ export default function HomePage() {
 
   const [loading, setLoading] = useState(true);
 
+  /**
+   * Simple artificial delay to demonstrate skeleton loading state.
+   */
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
 
+  /**
+   * Dispatches create or update actions based on the current context.
+   */
   const handleSave = (assistant: Assistant) => {
     if (editing) {
       updateAssistant(editing.id, assistant);
@@ -48,6 +64,9 @@ export default function HomePage() {
     setEditing(null);
   };
 
+  /**
+   * Finalizes deletion after user confirmation.
+   */
   const handleDeleteConfirm = () => {
     if (!assistantToDelete) return;
     deleteAssistant(assistantToDelete.id);
@@ -55,6 +74,7 @@ export default function HomePage() {
     setAssistantToDelete(null);
   };
 
+  // Prevent UI flashing by showing skeletons during loading or hydration
   if (!mounted || loading) {
     return (
       <div className={styles.skeletonGrid}>

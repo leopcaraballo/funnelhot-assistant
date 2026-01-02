@@ -8,7 +8,8 @@
     "reset": "Reiniciar",
     "delete": "Eliminar",
     "confirmDelete": "¿Estás seguro de eliminar este asistente?",
-    "step": "Paso {current} de {total}"
+    "step": "Paso {current} de {total}",
+    "deleteWarning": "Esta acción no se puede deshacer. El asistente <strong>{name}</strong> y todo su historial de entrenamiento serán eliminados permanentemente."
   },
   "home": {
     "title": "Asistentes de IA",

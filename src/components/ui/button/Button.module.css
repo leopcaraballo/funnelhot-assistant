@@ -1,3 +1,8 @@
+/**
+ * Styles for the Button component including variants, sizes, and interactive states.
+ */
+
+/* --- Base Styles --- */
 .button {
   position: relative;
   display: inline-flex;
@@ -12,7 +17,7 @@
   border: none;
   white-space: nowrap;
 
-  /* Sensación de objeto físico */
+  /* Provides a subtle physical feel and prevents color bleeding */
   background-clip: padding-box;
 
   transition:
@@ -22,12 +27,12 @@
     opacity 200ms ease;
 }
 
-/* Presión física */
+/* Tactile feedback on click */
 .button:active:not(:disabled) {
   transform: scale(0.97);
 }
 
-/* Accesibilidad premium */
+/* Focus styles for keyboard navigation accessibility */
 .button:focus-visible {
   outline: none;
   box-shadow:
@@ -47,11 +52,10 @@
   font-weight: 500;
 }
 
-/* --- Primary --- */
+/* --- Variants --- */
 .primary {
   background-color: var(--primary);
   color: #ffffff;
-
   box-shadow:
     var(--shadow-sm),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -64,11 +68,9 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-/* --- Secondary (System Button) --- */
 .secondary {
   background-color: var(--bg-card);
   color: var(--text-primary);
-
   box-shadow:
     var(--shadow-sm),
     inset 0 0 0 1px var(--border);
@@ -81,11 +83,9 @@
     inset 0 0 0 1px var(--border);
 }
 
-/* --- Danger --- */
 .danger {
   background-color: var(--danger);
   color: #ffffff;
-
   box-shadow:
     var(--shadow-sm),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -96,7 +96,7 @@
   box-shadow: var(--shadow-md);
 }
 
-/* --- Disabled / Loading --- */
+/* --- Status States --- */
 .button:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -107,29 +107,27 @@
   cursor: default;
 }
 
-/* --- Content --- */
+/* --- Transitions & Loader --- */
 .content {
   display: inline-flex;
   align-items: center;
   gap: inherit;
-
   transition:
     opacity 200ms ease,
     transform 200ms ease;
 }
 
+/* Hide content slightly and fade out when loading */
 .loading .content {
   opacity: 0;
   transform: translateY(-2px);
 }
 
-/* --- Loader --- */
 .loader {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: currentColor;
   animation: fadeIn 200ms ease-out;
 }

@@ -1,10 +1,15 @@
 import { Assistant } from '@/types/assistant';
 
+/**
+ * Local storage key used to persist assistants.
+ */
 const STORAGE_KEY = 'funnelhot.assistants';
 
 /**
- * Obtiene todos los asistentes desde localStorage.
- * Retorna un array vacío si no hay datos o si ocurre un error.
+ * Retrieves all assistants from localStorage.
+ *
+ * Returns an empty array when running on the server,
+ * when no data is found, or when parsing fails.
  */
 export function getAssistants(): Assistant[] {
   if (typeof window === 'undefined') return [];
@@ -22,7 +27,7 @@ export function getAssistants(): Assistant[] {
 }
 
 /**
- * Obtiene un asistente por ID.
+ * Retrieves a single assistant by its identifier.
  */
 export function getAssistantById(id: string): Assistant | null {
   const assistants = getAssistants();
@@ -30,7 +35,7 @@ export function getAssistantById(id: string): Assistant | null {
 }
 
 /**
- * Crea un nuevo asistente.
+ * Persists a new assistant in localStorage.
  */
 export function createAssistant(assistant: Assistant): void {
   const assistants = getAssistants();
@@ -40,7 +45,7 @@ export function createAssistant(assistant: Assistant): void {
 }
 
 /**
- * Actualiza un asistente existente.
+ * Updates an existing assistant using partial data.
  */
 export function updateAssistant(id: string, data: Partial<Assistant>): void {
   const assistants = getAssistants();
@@ -51,7 +56,7 @@ export function updateAssistant(id: string, data: Partial<Assistant>): void {
 }
 
 /**
- * Elimina un asistente por ID.
+ * Removes an assistant from localStorage by its identifier.
  */
 export function deleteAssistant(id: string): void {
   const assistants = getAssistants();

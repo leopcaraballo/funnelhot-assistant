@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file AssistantTrainingClient.tsx
+ * @description Main client-side logic for the assistant training interface.
+ * Allows users to update behavior rules and test them via a side-by-side chat window.
+ */
+
 import { useState } from 'react';
 import { notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -25,14 +31,18 @@ export function AssistantTrainingClient({ id }: Props) {
   const [rules, setRules] = useState(() => assistant?.rules ?? '');
   const [saved, setSaved] = useState(false);
 
+  // Handles client-side hydration for local storage hooks
   if (!mounted) {
-    return <div className={styles.container}>Cargando parámetros...</div>;
+    return <div className={styles.container}>Loading parameters...</div>;
   }
 
   if (!assistant) {
     return notFound();
   }
 
+  /**
+   * Persists updated behavioral rules to the local storage.
+   */
   const handleSave = () => {
     updateAssistant(assistant.id, { rules });
     setSaved(true);
@@ -50,7 +60,7 @@ export function AssistantTrainingClient({ id }: Props) {
       </header>
 
       <div className={styles.layout}>
-        {/* RULES */}
+        {/* Rules configuration panel */}
         <section className={styles.rulesSection}>
           <div className={styles.rulesHeader}>
             <h2 className={styles.sectionTitle}>{t('title')}</h2>
@@ -72,7 +82,7 @@ export function AssistantTrainingClient({ id }: Props) {
           </div>
         </section>
 
-        {/* CHAT */}
+        {/* Live simulation panel */}
         <section className={styles.chatSection}>
           <div className={styles.chatHeader}>
             <h2 className={styles.sectionTitle}>{t('chatTitle')}</h2>

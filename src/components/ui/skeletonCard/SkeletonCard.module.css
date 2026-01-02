@@ -1,37 +1,34 @@
+/**
+ * Shimmer animation and structural styles for skeleton loaders.
+ */
+
 .card {
   display: flex;
   flex-direction: column;
   gap: 20px;
-
   padding: 24px;
-
   background-color: var(--bg-card);
   border-radius: var(--radius-lg);
-
-  /* Misma estructura que Card real */
   box-shadow:
     inset 0 0 0 1px var(--border),
     var(--shadow-sm);
-
   overflow: hidden;
   position: relative;
 }
 
-/* Base skeleton */
+/* Base skeleton background */
 .skeleton {
   position: relative;
   overflow: hidden;
-
   background-color: rgba(0, 0, 0, 0.06);
   border-radius: var(--radius-sm);
 }
 
-/* Shimmer refinado */
+/* Refined shimmer effect overlay */
 .skeleton::after {
   content: '';
   position: absolute;
   inset: 0;
-
   transform: translateX(-100%);
   background: linear-gradient(
     90deg,
@@ -41,17 +38,14 @@
     rgba(255, 255, 255, 0.25) 55%,
     rgba(255, 255, 255, 0) 100%
   );
-
   animation: shimmer 2.4s infinite linear;
 }
 
-/* Title */
 .title {
   height: 20px;
   width: 58%;
 }
 
-/* Meta rows */
 .metaRow {
   display: flex;
   flex-direction: column;
@@ -64,7 +58,6 @@
   width: 100%;
 }
 
-/* Buttons */
 .button {
   height: 36px;
   width: 84px;
@@ -72,14 +65,14 @@
   margin-top: 8px;
 }
 
-/* Shimmer lento y elegante */
+/* Linear shimmer translation */
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
   }
 }
 
-/* Reduce motion */
+/* Accessibility: Stop animation if user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .skeleton::after {
     animation: none;

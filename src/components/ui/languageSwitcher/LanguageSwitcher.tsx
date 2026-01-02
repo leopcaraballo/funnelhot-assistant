@@ -1,11 +1,20 @@
 'use client';
 
+/**
+ * @file LanguageSwitcher.tsx
+ * @description A dropdown component to toggle application locales.
+ * Features automatic path redirection and click-outside detection.
+ */
+
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import React, { useState, useRef, useEffect } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import styles from './LanguageSwitcher.module.css';
 
+/**
+ * List of available locales with their codes, labels, and country codes.
+ */
 const locales = [
   { code: 'es', label: 'Español', country: 'ES' },
   { code: 'en', label: 'English', country: 'US' },
@@ -18,9 +27,11 @@ export const LanguageSwitcher = () => {
   const currentLocale = useLocale();
   const [open, setOpen] = useState(false);
 
-  // Referencia para cerrar al hacer clic fuera (detalle de lujo)
   const containerRef = useRef<HTMLDivElement>(null);
 
+  /**
+   * Closes the dropdown when a click occurs outside the component container.
+   */
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -31,6 +42,9 @@ export const LanguageSwitcher = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  /**
+   * Replaces the locale segment in the current URL and triggers navigation.
+   */
   const changeLocale = (newLocale: string) => {
     const segments = pathname.split('/');
     if (segments[1] === currentLocale) segments[1] = newLocale;

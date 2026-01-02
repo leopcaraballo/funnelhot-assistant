@@ -1,3 +1,8 @@
+/**
+ * Root layout for localized routes.
+ * Initializes the internationalization provider and defines font variables.
+ */
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { notFound } from 'next/navigation';
@@ -8,16 +13,17 @@ import { routing } from '@/i18n/routing';
 import '@/styles/globals.css';
 import { AssistantLanguage } from '@/types/assistant';
 
-// Configuración de la fuente
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
-  display: 'swap', // Mejora el rendimiento de carga
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
   title: 'Funnelhot Assistant',
   description: 'AI Assistant Management Platform',
+  keywords: ['AI', 'Assistant', 'Management', 'Platform'],
+  authors: [{ name: 'Leopoldo Caraballo' }],
 };
 
 type Props = {
@@ -25,15 +31,17 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
+/**
+ * Standard RootLayout. Validates the locale segment against supported languages.
+ */
 export default async function RootLayout({ children, params }: Props) {
   const { locale } = await params;
 
-  // Validación de seguridad para el locale
   if (!routing.locales.includes(locale as AssistantLanguage)) {
     notFound();
   }
 
-  // Carga de mensajes para el cliente
+  // Fetch messages server-side to pass them into the client provider
   const messages = await getMessages();
 
   return (

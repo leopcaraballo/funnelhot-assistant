@@ -1,3 +1,7 @@
+/**
+ * Styles for the multi-step assistant creation flow.
+ */
+
 .container {
   display: flex;
   flex-direction: column;
@@ -38,6 +42,7 @@
   animation: slideUp 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+/* Percentage inputs container */
 .percentGroup {
   background-color: rgba(0, 0, 0, 0.03);
   border-radius: var(--radius-md);
@@ -53,6 +58,7 @@
   display: block;
 }
 
+/* Horizontal alignment for numeric inputs */
 .gridInputs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -68,6 +74,7 @@
   border-radius: var(--radius-sm);
 }
 
+/* Form action bar */
 .actions {
   display: flex;
   justify-content: flex-end;
@@ -77,6 +84,7 @@
   border-top: 1px solid var(--border);
 }
 
+/* --- Entrance Animations --- */
 @keyframes fadeIn {
   from {
     opacity: 0;

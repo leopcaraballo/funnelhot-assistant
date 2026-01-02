@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file Textarea.tsx
+ * @description Multi-line text input component with auto-scaling focus effects,
+ * accessible labeling, and custom scrollbar styling.
+ */
+
 import { useId, forwardRef } from 'react';
 import styles from './Textarea.module.css';
 
@@ -8,6 +14,10 @@ interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
   error?: string;
 }
 
+/**
+ * Textarea component using forwardRef for hook-form compatibility.
+ * Includes spellCheck='false' to maintain a clean visual interface.
+ */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, error, id, className, ...props }, ref) => {
     const generatedId = useId();

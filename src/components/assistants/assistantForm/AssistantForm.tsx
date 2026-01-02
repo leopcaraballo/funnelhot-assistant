@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * @file AssistantForm.tsx
+ * @description Multi-step form for creating and editing AI assistants.
+ * Includes validation for name length and response percentage summation.
+ */
+
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Assistant, AssistantLanguage, AssistantTone } from '@/types/assistant';
@@ -23,6 +29,9 @@ const LANGUAGES: { label: string; value: AssistantLanguage }[] = [
 
 const TONES: AssistantTone[] = ['Formal', 'Casual', 'Profesional', 'Amigable'];
 
+/**
+ * Form component with 2 steps: Basic Data and Response Configuration.
+ */
 export function AssistantForm({ initialData, onSave, onCancel }: Props) {
   const t = useTranslations('assistants');
   const tCommon = useTranslations('common');
@@ -30,7 +39,10 @@ export function AssistantForm({ initialData, onSave, onCancel }: Props) {
   const [step, setStep] = useState<1 | 2>(1);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Función robusta para generar ID si randomUUID falla (entornos HTTP/IP Local)
+  /**
+   * Generates a unique ID using crypto.randomUUID if available,
+   * otherwise falls back to a timestamp-based random string.
+   */
   const generateSafeId = () => {
     if (typeof window !== 'undefined' && window.crypto?.randomUUID) {
       return window.crypto.randomUUID();
@@ -38,7 +50,10 @@ export function AssistantForm({ initialData, onSave, onCancel }: Props) {
     return Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
   };
 
-  // Lazy Initialization del estado para evitar recrear datos en cada render
+  /**
+   * State initialization using a lazy initializer to avoid
+   * unnecessary re-computations on every render.
+   */
   const [form, setForm] = useState<Assistant>(
     () =>
       initialData ?? {
@@ -53,6 +68,10 @@ export function AssistantForm({ initialData, onSave, onCancel }: Props) {
       },
   );
 
+  /**
+   * Validates Step 1: Basic Data.
+   * @returns {boolean} True if validation passes.
+   */
   const validateStep1 = () => {
     const newErrors: Record<string, string> = {};
     if (form.name.trim().length < 3) {
@@ -68,8 +87,11 @@ export function AssistantForm({ initialData, onSave, onCancel }: Props) {
     }
   };
 
+  /**
+   * Final validation and submission.
+   * Ensures response length percentages sum exactly to 100.
+   */
   const handleSave = () => {
-    // Aseguramos que los valores sean tratados como números para la suma
     const total =
       Number(form.responseLength.short || 0) +
       Number(form.responseLength.medium || 0) +

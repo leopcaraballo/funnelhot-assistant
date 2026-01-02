@@ -8,7 +8,8 @@
     "reset": "Reset",
     "delete": "Delete",
     "confirmDelete": "Are you sure you want to delete this assistant?",
-    "step": "Step {current} of {total}"
+    "step": "Step {current} of {total}",
+    "deleteWarning": "This action cannot be undone. The assistant <strong>{name}</strong> and all its training history will be permanently deleted."
   },
   "home": {
     "title": "AI Assistants",

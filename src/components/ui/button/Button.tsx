@@ -1,21 +1,35 @@
 'use client';
 
+/**
+ * @file Button.tsx
+ * @description A polymorphic, accessible button component supporting multiple variants,
+ * sizes, and a loading state with a built-in spinner.
+ */
+
 import { forwardRef } from 'react';
 import styles from './Button.module.css';
 
+/**
+ * Defines the visual style and dimensions of the button.
+ */
 export type ButtonVariant = 'primary' | 'secondary' | 'danger';
 export type ButtonSize = 'sm' | 'md';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  /** Indicates if the button is in a processing state, showing a spinner and disabling interaction. */
   loading?: boolean;
 }
 
+/**
+ * Reusable Button component using forwardRef to allow parent components to access the DOM node.
+ */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, variant = 'primary', size = 'md', loading = false, disabled, className, ...props }, ref) => {
     const isDisabled = disabled || loading;
 
+    // Filter(Boolean) ensures no empty strings are joined if a style or className is undefined.
     const buttonClasses = [styles.button, styles[variant], styles[size], loading ? styles.loading : '', className]
       .filter(Boolean)
       .join(' ');
@@ -26,7 +40,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
         {loading && (
           <span className={styles.loader}>
-            {/* Aquí podrías poner un SVG de Spinner circular minimalista */}
             <svg
               width='18'
               height='18'
